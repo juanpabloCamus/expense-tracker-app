@@ -44,10 +44,9 @@ class Operation extends Model {
       {
         tableName: 'operations',
         sequelize,
-      }
+      },
     );
   }
 }
-
 
 export default Operation;

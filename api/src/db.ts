@@ -3,10 +3,12 @@ import Operation from './schemas/Operation';
 import User from './schemas/User';
 import Category from './schemas/Category';
 
-const connectionURI = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/expense_app'
+const connectionURI =
+  process.env.DATABASE_URL ||
+  'postgres://postgres:1234@localhost:5432/expense_app';
 
 // Connect to the database
-export const sequelize = new Sequelize(connectionURI)
+export const sequelize = new Sequelize(connectionURI);
 
 // Initialize the models
 User.initialize(sequelize);

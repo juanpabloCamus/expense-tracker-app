@@ -1,4 +1,4 @@
-import { Model, DataTypes, Sequelize } from "sequelize";
+import { Model, DataTypes, Sequelize } from 'sequelize';
 
 class Category extends Model {
   declare id: number;
@@ -20,10 +20,9 @@ class Category extends Model {
       {
         tableName: 'categories',
         sequelize,
-      }
+      },
     );
   }
 }
-
 
 export default Category;
