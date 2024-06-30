@@ -8,12 +8,6 @@ import { DataTypes, Model, Sequelize } from 'sequelize';
  */
 
 class User extends Model {
-  declare id: number;
-  declare name: string;
-  declare email: string;
-  declare password: string;
-  declare balance: number;
-
   static initialize(sequelize: Sequelize) {
     User.init(
       {
