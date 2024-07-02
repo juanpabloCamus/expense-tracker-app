@@ -20,4 +20,14 @@ export default class UserModel {
       throw new ServerError('Internal Server Error');
     }
   }
+
+  static async findUserByEmail(email: string): Promise<User | null> {
+    try {
+      const user = await User.findOne({ where: { email } });
+      return user;
+    } catch (error: any) {
+      console.error(error);
+      throw new ServerError('Internal Server Error');
+    }
+  }
 }

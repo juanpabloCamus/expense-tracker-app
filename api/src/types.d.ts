@@ -7,3 +7,4 @@ export interface User {
 }
 
 export type NewUserEntry = Omit<User, 'id' | 'balance'>;
+export type LoginUserEnrty = Omit<User, 'id' | 'balance' | 'name'>;

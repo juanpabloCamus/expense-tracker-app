@@ -7,7 +7,7 @@ import { authRouter } from './routes/authRouter';
 import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
-const PORT = process.env.PORT ?? 3001;
+const PORT = process.env.PORT ?? 4321;
 
 app.use(express.json());
 app.use(morgan('dev'));
