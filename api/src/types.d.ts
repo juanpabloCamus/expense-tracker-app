@@ -1,3 +1,4 @@
+import { Request } from 'express';
 export interface User {
   id: number;
   name: string;
@@ -8,3 +9,9 @@ export interface User {
 
 export type NewUserEntry = Omit<User, 'id' | 'balance'>;
 export type LoginUserEnrty = Omit<User, 'id' | 'balance' | 'name'>;
+
+declare module 'express' {
+  interface Request {
+    userId?: string;
+  }
+}

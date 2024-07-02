@@ -15,7 +15,8 @@ export function errorHandler(
   res: Response,
   _next: NextFunction,
 ) {
-  console.error('=== ERROR HANDLER ===', err);
+  console.log('=== ERROR HANDLER ===');
+  console.error(err);
 
   if (err instanceof ServerError) {
     return res.status(err.status).send(err.message);

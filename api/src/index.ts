@@ -1,21 +1,28 @@
 import express from 'express';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 import { sequelize as dbConnection } from './db';
 import { operationsRouter } from './routes/operationsRouter';
 import { authRouter } from './routes/authRouter';
 import { errorHandler } from './middlewares/errorHandler';
+import { auth } from './middlewares/authMiddleware';
 
 const app = express();
 const PORT = process.env.PORT ?? 4321;
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(morgan('dev'));
 
 // Routes
 app.use('/auth', authRouter);
-app.use('/operations', operationsRouter);
 
+// Auth
+app.use(auth);
+
+// Protected Routes
+app.use('/operations', operationsRouter);
 app.get('/', (_req, res) => {
   res.send('Home');
 });
@@ -28,7 +35,7 @@ dbConnection
     console.log('Connection with database has been established successfully.');
   })
   .then(() => {
-    dbConnection.sync({ force: true });
+    dbConnection.sync({ force: false });
   })
   .then(() => {
     app.listen(PORT, () => {
