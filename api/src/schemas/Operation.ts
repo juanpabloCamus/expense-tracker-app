@@ -18,19 +18,16 @@ class Operation extends Model {
         },
         description: {
           type: DataTypes.STRING,
-          allowNull: false,
+          allowNull: true,
         },
         amount: {
           type: DataTypes.FLOAT,
           allowNull: false,
         },
-        date: {
-          type: DataTypes.DATE,
-          allowNull: false,
-        },
         type: {
-          type: DataTypes.STRING,
+          type: DataTypes.ENUM,
           allowNull: false,
+          values: ['income', 'withdrawal'],
         },
         user_id: {
           type: DataTypes.INTEGER,

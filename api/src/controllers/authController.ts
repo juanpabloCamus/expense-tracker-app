@@ -11,7 +11,7 @@ import {
   generateAccessToken,
   generateRefreshToken,
   hashPassword,
-} from '../services/userServices';
+} from '../services/userService';
 
 export default class AuthController {
   static async login(req: Request, res: Response, next: NextFunction) {
@@ -56,14 +56,12 @@ export default class AuthController {
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       });
 
-      res
-        .status(200)
-        .send({
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          balance: user.balance,
-        });
+      res.status(200).send({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        balance: user.balance,
+      });
     } catch (error: any) {
       next(error);
     }

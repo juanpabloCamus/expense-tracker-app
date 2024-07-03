@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
 import { ServerError } from './errorHandler';
-import { generateAccessToken } from '../services/userServices';
+import { generateAccessToken } from '../services/userService';
 import { User } from '../types';
 
 export const auth = async (req: Request, res: Response, next: NextFunction) => {

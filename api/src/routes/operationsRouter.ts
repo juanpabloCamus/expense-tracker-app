@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
-//import OperationsController from '../controllers/operationsController';
+import OperationsController from '../controllers/operationsController';
 
 export const operationsRouter = Router();
 
-// operationsRouter.get('/', OperationsController.getUserOperations);
-// operationsRouter.get('/:id', OperationsController.getUserOperationById);
+operationsRouter.get('/', OperationsController.getUserOperations);
+operationsRouter.get('/:id', OperationsController.getUserOperationById);
 
-// operationsRouter.post('/', OperationsController.createOperation);
+operationsRouter.post('/', OperationsController.createOperation);
 
 // operationsRouter.put('/:id', OperationsController.updateOperation);
 
