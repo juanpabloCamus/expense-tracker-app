@@ -55,6 +55,27 @@ export default class OperationsController {
       next(error);
     }
   }
-  //   static async updateOperation(req: Request, res: Response) {}
+  //TODO: Check if the operation is from the user that are requesting
+  static async updateOperation(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    try {
+      const validatedOperation = validateNewOperationEntry(req.body);
+
+      const updatedOperation = await OperationModel.updateOperation(
+        validatedOperation,
+        +req.params.id,
+      );
+
+      await UserModel.updateUserBalance(req.userId!, updatedOperation.amount);
+
+      return res.status(200).send(updatedOperation);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   //   static async deleteOperation(req: Request, res: Response) {}
 }

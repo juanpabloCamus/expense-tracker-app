@@ -9,6 +9,6 @@ operationsRouter.get('/:id', OperationsController.getUserOperationById);
 
 operationsRouter.post('/', OperationsController.createOperation);
 
-// operationsRouter.put('/:id', OperationsController.updateOperation);
+operationsRouter.put('/:id', OperationsController.updateOperation);
 
 // operationsRouter.delete('/:id', OperationsController.deleteOperation);

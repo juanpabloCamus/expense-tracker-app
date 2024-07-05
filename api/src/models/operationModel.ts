@@ -39,8 +39,7 @@ export default class OperationModel {
 
   /**
    * Create one operation.
-   * @param operationId - Operation ID.
-   * @param userId - User ID.
+   * @param operation - Operation ID.
    * @returns A promise that resolves to the operation.
    * @throws Error if there is an error with the query.
    */
@@ -54,5 +53,29 @@ export default class OperationModel {
     });
 
     return newOperation;
+  }
+
+  /**
+   * Create one operation.
+   * @param operation - Operation
+   * @param operation  - Operation ID
+   * @returns A promise that resolves to the operation.
+   * @throws Error if there is an error with the query.
+   */
+  static async updateOperation(
+    operation: NewOperationInsert,
+    operationId: Number,
+  ) {
+    const updatedOperation = await Operation.update(
+      {
+        ...operation,
+      },
+      {
+        where: { id: operationId },
+        returning: true,
+      },
+    );
+
+    return updatedOperation[1][0];
   }
 }

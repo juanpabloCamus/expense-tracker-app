@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
+//import dotenv from 'dotenv';
 
 import { sequelize as dbConnection } from './db';
 import { operationsRouter } from './routes/operationsRouter';
@@ -10,9 +10,9 @@ import { errorHandler } from './middlewares/errorHandler';
 import { auth } from './middlewares/authMiddleware';
 
 const app = express();
-dotenv.config();
+//dotenv.config();
 
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 3006;
 
 app.use(express.json());
 app.use(cookieParser());
